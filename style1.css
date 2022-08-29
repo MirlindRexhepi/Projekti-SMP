@@ -1,0 +1,12 @@
+#projekti input[type="text"],#projekti input[type="date"],#projekti input[type="submit"],
+#pune input[type="date"],#pune input[type="pershkrimi"],#pune input[type="submit"],select{
+    height: 25px;
+    width: 98%;
+    border-radius:1px;
+    padding-left:5px;
+    border:1px solid #e3e5e5;
+    margin:10px 0px;
+}
+#projekti input[type="submit"]{
+    background-color: lightblue;
+}

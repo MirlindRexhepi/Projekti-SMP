@@ -1,0 +1,59 @@
+<?php include 'inc/header.php' ?>
+<!-- End of Header-->
+<!--Main Part-->
+<main class="container page">
+    <article class="maininfo">
+        <h2 class="title">SMP Projekti Pershkrimi</h2>
+        <p>
+            Sistemi për menaxhimin e projekteve mundëson një kompanie menaxhimin e punëve nga punëtorët e saj
+            për projektet që ajo ka. Sistemi ofron menaxhimin e stafit: shtimin, modifikimin fshirjen,
+            paraqitjen e stafit, menaxhimin e projekteve: shtimin, modifikimin fshirjen, paraqitjen e projekteve
+            dhe menaxhimin e punëve ë bën stafi në kuadër të projekteve.
+        </p>
+    </article>
+
+    <?php include 'inc/sidebar.php' ?>
+    <section id="content" class="box">
+
+        <?php
+        if (isset($_GET['aid'])) {
+            $antariid = $_GET['aid'];
+            $antari = merrAntarId($antariid);
+            $emri = $antari['emri'];
+            $mbiemri = $antari['mbiemri'];
+            $telefoni = $antari['telefoni'];
+
+            $email = $antari['email'];
+        }
+
+        if (isset($_POST['fshij'])) {
+            fshijAntar($_POST['antariid']);
+        }
+
+        ?>
+        <form id="login" class="box" method="post">
+            <legend>Forma për regjistrim</legend>
+            <input type="hidden" id="antariid" name="antariid" 
+            readonly value="<?php if (!empty($antariid)) echo $antariid; ?>">
+            <fieldset>
+                <label>Emri: </label>
+                <input type="text" id="emri" name="emri" readonly value="<?php if (!empty($emri)) echo $emri; ?>">
+            </fieldset>
+            <fieldset>
+                <label>Mbiemri: </label>
+                <input type="text" id="mbiemri" name="mbiemri" value="<?php if (!empty($mbiemri)) echo $mbiemri; ?>">
+            </fieldset>
+            <fieldset>
+                <label>Telefoni: </label>
+                <input type="text" id="telefoni" name="telefoni" value="<?php if (!empty($telefoni)) echo $telefoni; ?>">
+            </fieldset>
+            <fieldset>
+                <label>Email: </label>
+                <input type="email" id="email" name="email" value="<?php if (!empty($email)) echo $email; ?>">
+            </fieldset>
+            <input type="submit" name="fshij" id="fshij" value="Fshij">
+        </form>
+
+    </section>
+</main>
+<?php include 'inc/footer.php' ?>
